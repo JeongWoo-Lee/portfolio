@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+
+<body>
+    <p>
+        이곳은 DOM 객체를 Javascript로 간단하게 변경하는 예제 입니다.
+        <br>
+    </p>
+    <hr>
+    <p id="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+    <hr>
+    Start index :
+    <input id="startIndex" type="number">
+    <br> End index :
+    <input id="endIndex" type="number">
+    <br> Text data :
+    <input id="changeData" type="text">
+    <br> Color :
+    <input type="radio" name="chkColor" value="black" checked="checked">Black
+    <input type="radio" name="chkColor" value="red">Red
+    <input type="radio" name="chkColor" value="green">Green
+    <input type="radio" name="chkColor" value="blue">Blue
+    <br>
+    <button onclick="validateValue();changeColor();">색상 변경</button>
+    <button onclick="validateValue();insertText();">문자 삽입</button>
+    <button onclick="validateValue();changeText();">문자 변경</button>
+    <button onclick="validateValue();deleteText();">문자 삭제</button>
+    <button onclick="reset();">초기화</button>
+    <hr>
+    <img src="assets/js-ex_1.jpg">
+    <script>
+        var text = document.getElementById("text").firstChild;
+        var startIndex = 0;
+        var endIndex = 1;
+        var changeData = "";
+        var color = [];
+        
+        //getData
+        function getData() {
+            text = document.getElementById('text').firstChild;
+            startIndex = document.getElementById('startIndex').value;
+            endIndex = document.getElementById('endIndex').value;
+            changeData = document.getElementById('changeData').value;
+            var chkColor = document.getElementsByName('chkColor');
+            
+            for (var i = 0; i < chkColor.length-1; i++) {
+                if (chkColor[i].checked == true) {
+                    color = chkColor[i].value;
+                }
+            }
+        }
+        //유효성검사
+        function validateValue() {
+            getData();
+            if (text.length <= 0) {
+                alert("문자가 없습니다. 초기화 합니다.");
+                reset();
+            } else if (startIndex >= text.length || startIndex < 0) {
+                alert("Start Index가 본문을 초과합니다");
+            } 
+        }
+        //changeColor
+        function changeColor() {
+            document.getElementById('text').style.color = color;
+        }
+        //insertText
+        function insertText(){
+            text.insertData(startIndex, changeData);
+        }
+        //changeText
+        function changeText(){
+            text.replaceData(startIndex, endIndex, changeData);
+        }
+        //deleteText
+        function deleteText(){
+            text.deleteData(startIndex, endIndex);
+        }
+        //reset
+        function reset(){
+           window.location.reload();
+        }
+    </script>
+</body>
+
+</html>
