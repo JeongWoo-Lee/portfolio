@@ -1,0 +1,9 @@
+# 데이터 수집 (필수)
+requests>=2.31
+
+# 초안 생성 (--draft 쓸 때만 필요)
+anthropic>=1.0
+
+# 스크린샷 (--shot 쓸 때만 필요, 로컬 전용)
+#   설치 후: playwright install chromium
+playwright>=1.40
