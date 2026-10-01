@@ -1,0 +1,8 @@
+.env
+*.session
+cookies*.json
+storage_state*.json
+chrome-profile/
+__pycache__/
+.venv/
+output/
