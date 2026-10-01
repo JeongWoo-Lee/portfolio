@@ -6,3 +6,4 @@ chrome-profile/
 __pycache__/
 .venv/
 output/
+jobs/
